@@ -34,12 +34,8 @@ model modules {
   status        Boolean
   userId        Int            @map("user_id")
   user          users?           @relation(fields: [userId], references: [id])
-  registration registrations[]
   payment      payments[]
-  userId        Int?            @map("user_id")
-  user          users?           @relation(fields: [userId], references: [id])
   registrations registrations[]
-  payments      payments[]
 }
 
 model students {
@@ -54,10 +50,6 @@ model students {
   user          users?           @relation(fields: [userId], references: [id])
   registration registrations[]
   payment      payments[]
-  userId        Int?           @map("user_id") // Rendre userId nullable
-  user          users?          @relation(fields: [userId], references: [id]) // Rendre la relation nullable
-  registrations registrations[]
-  payments      payments[]
 }
 
 model registrations {
@@ -69,7 +61,6 @@ model registrations {
   userId       Int?       @map("user_id")
   studentId    Int       @map("student_id")
   moduleId     Int       @map("module_id")
-  user         users?      @relation(fields: [userId], references: [id])
   user         users?      @relation(fields: [userId], references: [id])
   student      students   @relation(fields: [studentId], references: [id])
   module       modules    @relation(fields: [moduleId], references: [id])
