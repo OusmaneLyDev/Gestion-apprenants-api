@@ -1,4 +1,4 @@
-# 🛠️ Gestion de Quincaillerie
+# 🛠️ Gestion des apprenants
 
 ## 📋 Prérequis
 
