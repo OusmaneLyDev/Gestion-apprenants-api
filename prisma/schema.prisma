@@ -32,7 +32,7 @@ model modules {
   price         Decimal        @db.Decimal(10, 2)
   status        Boolean
   userId        Int            @map("user_id")
-  user          users           @relation(fields: [userId], references: [id])
+  user          users?           @relation(fields: [userId], references: [id])
   registration registrations[]
   payment      payments[]
 }
@@ -46,7 +46,7 @@ model students {
   tutor         String?        @db.VarChar(50)
   status        Boolean
   userId        Int            @map("user_id")
-  user          users           @relation(fields: [userId], references: [id])
+  user          users?           @relation(fields: [userId], references: [id])
   registration registrations[]
   payment      payments[]
 }
@@ -60,7 +60,7 @@ model registrations {
   userId       Int       @map("user_id")
   studentId    Int       @map("student_id")
   moduleId     Int       @map("module_id")
-  user         users      @relation(fields: [userId], references: [id])
+  user         users?      @relation(fields: [userId], references: [id])
   student      students   @relation(fields: [studentId], references: [id])
   module       modules    @relation(fields: [moduleId], references: [id])
   payment     payments[]
