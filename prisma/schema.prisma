@@ -13,31 +13,32 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
+model users {
   id            Int            @id @default(autoincrement())
   fullName      String         @map("full_name") @db.VarChar(50)
   email         String         @unique @db.VarChar(100)
   status        Boolean
   password      String         @db.Text
-  role          String         @db.VarChar(30)
-  modules       Module[]
-  students      Student[]
-  registrations Registration[]
+  role          String?           @db.VarChar(30)
+  modules       modules[]
+  students      students[]
+  registrations registrations[]
+  payments      payments[]
 }
 
-model Module {
+model modules {
   id            Int            @id @default(autoincrement())
   name          String         @db.VarChar(50)
   duration      DateTime
   price         Decimal        @db.Decimal(10, 2)
   status        Boolean
   userId        Int            @map("user_id")
-  user          User           @relation(fields: [userId], references: [id])
-  registrations Registration[]
-  payments      Payment[]
+  user          users           @relation(fields: [userId], references: [id])
+  registrations registrations[]
+  payments      payments[]
 }
 
-model Student {
+model students {
   id            Int            @id @default(autoincrement())
   fullName      String         @map("full_name") @db.VarChar(50)
   phoneNumber   String         @unique @map("phone_number") @db.VarChar(15)
@@ -46,12 +47,12 @@ model Student {
   tutor         String?        @db.VarChar(50)
   status        Boolean
   userId        Int            @map("user_id")
-  user          User           @relation(fields: [userId], references: [id])
-  registrations Registration[]
-  payments      Payment[]
+  user          users           @relation(fields: [userId], references: [id])
+  registrations registrations[]
+  payments      payments[]
 }
 
-model Registration {
+model registrations {
   id           Int       @id @default(autoincrement())
   dateRegister DateTime  @map("date_register")
   startDate    DateTime  @map("start_date")
@@ -60,24 +61,26 @@ model Registration {
   userId       Int       @map("user_id")
   studentId    Int       @map("student_id")
   moduleId     Int       @map("module_id")
-  user         User      @relation(fields: [userId], references: [id])
-  student      Student   @relation(fields: [studentId], references: [id])
-  module       Module    @relation(fields: [moduleId], references: [id])
-  payments     Payment[]
+  user         users      @relation(fields: [userId], references: [id])
+  student      students   @relation(fields: [studentId], references: [id])
+  module       modules    @relation(fields: [moduleId], references: [id])
+  payments     payments[]
 }
 
-model Payment {
+model payments {
   studentId      Int
   moduleId       Int
   registrationId Int
+  userId         Int          @map("user_id")
   paymentDate    DateTime     @map("payment_date")
   amount         Decimal      @db.Decimal(10, 2)
   payer          String       @db.VarChar(50)
   payerNumber    String       @map("payer_number") @db.VarChar(15)
   paymentMode    String       @map("payment_mode") @db.VarChar(50)
-  student        Student      @relation(fields: [studentId], references: [id])
-  module         Module       @relation(fields: [moduleId], references: [id])
-  registration   Registration @relation(fields: [registrationId], references: [id])
+  student        students      @relation(fields: [studentId], references: [id])
+  module         modules       @relation(fields: [moduleId], references: [id])
+  registration   registrations @relation(fields: [registrationId], references: [id])
+  user           users         @relation(fields: [userId], references: [id])
 
   @@id([studentId, moduleId, registrationId])
 }
