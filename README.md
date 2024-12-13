@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # 🛠️ Gestion de apprenants
+=======
+# 🛠️ Gestion des apprenants
+>>>>>>> origin/main
 
 ## 📋 Prérequis
 
