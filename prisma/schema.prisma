@@ -19,10 +19,11 @@ model users {
   email         String         @unique @db.VarChar(100)
   status        Boolean
   password      String         @db.Text
-  role          String         @db.VarChar(30)
-  module       modules[]
-  student      students[]
-  registration registrations[]
+  role          String?           @db.VarChar(30)
+  modules       modules[]
+  students      students[]
+  registrations registrations[]
+  payments      payments[]
 }
 
 model modules {
@@ -35,6 +36,10 @@ model modules {
   user          users?           @relation(fields: [userId], references: [id])
   registration registrations[]
   payment      payments[]
+  userId        Int?            @map("user_id")
+  user          users?           @relation(fields: [userId], references: [id])
+  registrations registrations[]
+  payments      payments[]
 }
 
 model students {
@@ -49,6 +54,10 @@ model students {
   user          users?           @relation(fields: [userId], references: [id])
   registration registrations[]
   payment      payments[]
+  userId        Int?           @map("user_id") // Rendre userId nullable
+  user          users?          @relation(fields: [userId], references: [id]) // Rendre la relation nullable
+  registrations registrations[]
+  payments      payments[]
 }
 
 model registrations {
@@ -57,19 +66,21 @@ model registrations {
   startDate    DateTime  @map("start_date")
   endDate      DateTime  @map("end_date")
   amount       Decimal   @db.Decimal(10, 2)
-  userId       Int       @map("user_id")
+  userId       Int?       @map("user_id")
   studentId    Int       @map("student_id")
   moduleId     Int       @map("module_id")
   user         users?      @relation(fields: [userId], references: [id])
+  user         users?      @relation(fields: [userId], references: [id])
   student      students   @relation(fields: [studentId], references: [id])
   module       modules    @relation(fields: [moduleId], references: [id])
-  payment     payments[]
+  payments     payments[]
 }
 
 model payments {
   studentId      Int
   moduleId       Int
   registrationId Int
+  userId         Int?          @map("user_id")
   paymentDate    DateTime     @map("payment_date")
   amount         Decimal      @db.Decimal(10, 2)
   payer          String       @db.VarChar(50)
@@ -78,5 +89,7 @@ model payments {
   student        students      @relation(fields: [studentId], references: [id])
   module         modules       @relation(fields: [moduleId], references: [id])
   registration   registrations @relation(fields: [registrationId], references: [id])
+  user           users?         @relation(fields: [userId], references: [id])
+
   @@id([studentId, moduleId, registrationId])
 }
