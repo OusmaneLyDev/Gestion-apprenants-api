@@ -32,10 +32,10 @@ model modules {
   duration      DateTime
   price         Decimal        @db.Decimal(10, 2)
   status        Boolean
-  userId        Int?            @map("user_id")
+  userId        Int            @map("user_id")
   user          users?           @relation(fields: [userId], references: [id])
+  payment      payments[]
   registrations registrations[]
-  payments      payments[]
 }
 
 model students {
@@ -46,10 +46,10 @@ model students {
   address       String         @db.VarChar(100)
   tutor         String?        @db.VarChar(50)
   status        Boolean
-  userId        Int?           @map("user_id") // Rendre userId nullable
-  user          users?          @relation(fields: [userId], references: [id]) // Rendre la relation nullable
-  registrations registrations[]
-  payments      payments[]
+  userId        Int            @map("user_id")
+  user          users?           @relation(fields: [userId], references: [id])
+  registration registrations[]
+  payment      payments[]
 }
 
 model registrations {
