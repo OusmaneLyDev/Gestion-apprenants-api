@@ -6,24 +6,26 @@ import {
   updateModule,
   deleteModule,
 } from "../controllers/moduleControler.js";
+import {
+  validateModule,
+  validateModuleId,
+} from "../validators/moduleValidatore.js";
 
 const router = express.Router();
-
-// Routes
 
 // Get all modules
 router.get("/", getModules);
 
 // Get a single module by ID
-router.get("/:id", getModuleById);
+router.get("/:id", validateModuleId, getModuleById);
 
 // Create a new module
-router.post("/", createModule);
+router.post("/", validateModule, createModule);
 
 // Update a module by ID
-router.put("/:id", updateModule);
+router.put("/:id", [validateModuleId, validateModule], updateModule);
 
 // Delete a module by ID
-router.delete("/:id", deleteModule);
+router.delete("/:id", validateModuleId, deleteModule);
 
 export default router;
