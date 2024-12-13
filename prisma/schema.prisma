@@ -19,18 +19,10 @@ model users {
   email         String         @unique @db.VarChar(100)
   status        Boolean
   password      String         @db.Text
-<<<<<<< HEAD
-  role          String?           @db.VarChar(30)
-  modules       modules[]
-  students      students[]
-  registrations registrations[]
-  payments      payments[]
-=======
   role          String         @db.VarChar(30)
   module       modules[]
   student      students[]
   registration registrations[]
->>>>>>> origin/main
 }
 
 model modules {
@@ -41,13 +33,8 @@ model modules {
   status        Boolean
   userId        Int            @map("user_id")
   user          users           @relation(fields: [userId], references: [id])
-<<<<<<< HEAD
-  registrations registrations[]
-  payments      payments[]
-=======
   registration registrations[]
   payment      payments[]
->>>>>>> origin/main
 }
 
 model students {
@@ -60,13 +47,8 @@ model students {
   status        Boolean
   userId        Int            @map("user_id")
   user          users           @relation(fields: [userId], references: [id])
-<<<<<<< HEAD
-  registrations registrations[]
-  payments      payments[]
-=======
   registration registrations[]
   payment      payments[]
->>>>>>> origin/main
 }
 
 model registrations {
@@ -81,18 +63,13 @@ model registrations {
   user         users      @relation(fields: [userId], references: [id])
   student      students   @relation(fields: [studentId], references: [id])
   module       modules    @relation(fields: [moduleId], references: [id])
-<<<<<<< HEAD
-  payments     payments[]
-=======
   payment     payments[]
->>>>>>> origin/main
 }
 
 model payments {
   studentId      Int
   moduleId       Int
   registrationId Int
-  userId         Int          @map("user_id")
   paymentDate    DateTime     @map("payment_date")
   amount         Decimal      @db.Decimal(10, 2)
   payer          String       @db.VarChar(50)
@@ -101,10 +78,5 @@ model payments {
   student        students      @relation(fields: [studentId], references: [id])
   module         modules       @relation(fields: [moduleId], references: [id])
   registration   registrations @relation(fields: [registrationId], references: [id])
-<<<<<<< HEAD
-  user           users         @relation(fields: [userId], references: [id])
-=======
->>>>>>> origin/main
-
   @@id([studentId, moduleId, registrationId])
 }
