@@ -14,18 +14,18 @@ import {
 const router = express.Router();
 
 // Get all modules
-router.get("/", getModules);
+router.get("/modules", getModules);
 
 // Get a single module by ID
-router.get("/:id", validateModuleId, getModuleById);
+router.get("/modules/:id", getModuleById);
 
 // Create a new module
-router.post("/", validateModule, createModule);
+router.post("/modules", validateModule, createModule);
 
 // Update a module by ID
-router.put("/:id", [validateModuleId, validateModule], updateModule);
+router.put("/modules/:id", [validateModuleId, validateModule], updateModule);
 
 // Delete a module by ID
-router.delete("/:id", validateModuleId, deleteModule);
+router.delete("/modules/:id", validateModuleId, deleteModule);
 
 export default router;
