@@ -78,6 +78,5 @@ model payments {
   student        students      @relation(fields: [studentId], references: [id])
   module         modules       @relation(fields: [moduleId], references: [id])
   registration   registrations @relation(fields: [registrationId], references: [id])
-
   @@id([studentId, moduleId, registrationId])
 }
