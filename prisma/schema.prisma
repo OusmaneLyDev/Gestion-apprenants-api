@@ -68,19 +68,20 @@ model registrations {
 }
 
 model payments {
+  id             Int      @id @default(autoincrement())
   studentId      Int
   moduleId       Int
   registrationId Int
-  userId         Int?          @map("user_id")
-  paymentDate    DateTime     @map("payment_date")
-  amount         Decimal      @db.Decimal(10, 2)
-  payer          String       @db.VarChar(50)
-  payerNumber    String       @map("payer_number") @db.VarChar(15)
-  paymentMode    String       @map("payment_mode") @db.VarChar(50)
-  student        students      @relation(fields: [studentId], references: [id])
-  module         modules       @relation(fields: [moduleId], references: [id])
-  registration   registrations @relation(fields: [registrationId], references: [id])
+  userId         Int?         @map("user_id")
+  paymentDate    DateTime      @map("payment_date")
+  amount         Decimal       @db.Decimal(10, 2)
+  payer          String        @db.VarChar(50)
+  payerNumber    String        @map("payer_number") @db.VarChar(15)
+  paymentMode    String        @map("payment_mode") @db.VarChar(50)
+  student        students       @relation(fields: [studentId], references: [id])
+  module         modules        @relation(fields: [moduleId], references: [id])
+  registration   registrations  @relation(fields: [registrationId], references: [id])
   user           users?         @relation(fields: [userId], references: [id])
 
-  @@id([studentId, moduleId, registrationId])
+  @@unique([studentId, moduleId, registrationId]) // Clé composite unique
 }

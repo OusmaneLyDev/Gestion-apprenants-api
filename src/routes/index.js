@@ -5,6 +5,7 @@ const router = express.Router();
 
 
 
+router.use(paymentRoute);
 router.use(studentRoute);
 router.use(moduleRoute)
 export default router;
