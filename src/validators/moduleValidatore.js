@@ -18,17 +18,6 @@ export const validateModule = [
     .withMessage("Price is required")
     .isFloat({ gt: 0 })
     .withMessage("Price must be a positive number"),
-  body("status")
-    .notEmpty()
-    .withMessage("Status is required")
-    .isBoolean()
-    .withMessage("Status must be a boolean"),
-  body("userId")
-    .notEmpty()
-    .withMessage("User ID is required")
-    .isInt()
-    .withMessage("User ID must be an integer"),
-  validateRequest,
 ];
 
 // Validation middleware for fetching or deleting a module by ID

@@ -31,8 +31,8 @@ model modules {
   name          String         @db.VarChar(50)
   duration      DateTime
   price         Decimal        @db.Decimal(10, 2)
-  status        Boolean
-  userId        Int            @map("user_id")
+  status        Boolean?       @default(true)
+  userId        Int?            @map("user_id")
   user          users?           @relation(fields: [userId], references: [id])
   payment      payments[]
   registrations registrations[]
@@ -46,7 +46,7 @@ model students {
   address       String         @db.VarChar(100)
   tutor         String?        @db.VarChar(50)
   status        Boolean
-  userId        Int            @map("user_id")
+  userId        Int?            @map("user_id")
   user          users?           @relation(fields: [userId], references: [id])
   registration registrations[]
   payment      payments[]
