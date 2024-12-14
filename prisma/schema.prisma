@@ -27,7 +27,7 @@ model users {
 }
 
 model modules {
-  id            Int            @id @default(autoincrement())
+  id            Int            @id @unique @default(autoincrement())
   name          String         @db.VarChar(50)
   duration      DateTime
   price         Decimal        @db.Decimal(10, 2)
@@ -83,5 +83,5 @@ model payments {
   registration   registrations  @relation(fields: [registrationId], references: [id])
   user           users?         @relation(fields: [userId], references: [id])
 
-  @@unique([studentId, moduleId, registrationId]) // Clé composite unique
+ // Clé composite unique
 }

@@ -9,6 +9,6 @@ router.get('/payments', getAllPayments);
 // Route pour ajouter un paiement
 router.post('/payments', addPayment);
 router.put('/payments/:id', updatePayment);
-router.delete('/payments/:paymentId', deletePayment);
+router.delete('/payments/:id', deletePayment);
 
 export default router;
