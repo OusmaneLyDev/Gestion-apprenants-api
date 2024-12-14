@@ -34,6 +34,12 @@ export const getModuleById = async (req, res) => {
 export const createModule = async (req, res) => {
   const { name, duration, price, status, userId } = req.body;
   try {
+    if (isNaN(new Date(duration))) {
+      return res
+        .status(400)
+        .json({ error: "Invalid date format for 'duration'" });
+    }
+
     const newModule = await prisma.modules.create({
       data: { name, duration: new Date(duration), price, status, userId },
     });
@@ -45,6 +51,7 @@ export const createModule = async (req, res) => {
   }
 };
 
+// Update a module
 export const updateModule = async (req, res) => {
   const { id } = req.params;
   const { name, duration, price, status, userId } = req.body;
@@ -56,14 +63,28 @@ export const updateModule = async (req, res) => {
       return res.status(404).json({ error: "Module not found" });
     }
 
+    if (duration && isNaN(new Date(duration))) {
+      return res
+        .status(400)
+        .json({ error: "Invalid date format for 'duration'" });
+    }
+
     const updatedModule = await prisma.modules.update({
       where: { id: parseInt(id) },
-      data: { name, duration: new Date(duration), price, status, userId },
+      data: {
+        name,
+        duration: duration ? new Date(duration) : undefined,
+        price,
+        status,
+        userId,
+      },
     });
 
     res.status(200).json(updatedModule);
   } catch (error) {
-    res.status(500).json({ error: "Failed to update module", details: error.message });
+    res
+      .status(500)
+      .json({ error: "Failed to update module", details: error.message });
   }
 };
 
