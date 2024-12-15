@@ -30,18 +30,27 @@ export const getModuleById = async (req, res) => {
   }
 };
 
-// Create a new module
 export const createModule = async (req, res) => {
   const { name, duration, price, status, userId } = req.body;
-  try {
-    if (isNaN(new Date(duration))) {
-      return res
-        .status(400)
-        .json({ error: "Invalid date format for 'duration'" });
-    }
 
+  // Ensure duration is a valid integer
+  const durationInt = parseInt(duration, 10);
+
+  if (isNaN(durationInt)) {
+    return res.status(400).json({
+      error: "Invalid format for 'duration'. It should be an integer.",
+    });
+  }
+
+  try {
     const newModule = await prisma.modules.create({
-      data: { name, duration: new Date(duration), price, status, userId },
+      data: {
+        name,
+        duration: durationInt, // Use the integer value of duration
+        price,
+        status,
+        userId,
+      },
     });
     res.status(201).json(newModule);
   } catch (error) {
@@ -51,10 +60,10 @@ export const createModule = async (req, res) => {
   }
 };
 
-// Update a module
 export const updateModule = async (req, res) => {
   const { id } = req.params;
   const { name, duration, price, status, userId } = req.body;
+
   try {
     const module = await prisma.modules.findUnique({
       where: { id: parseInt(id) },
@@ -63,17 +72,25 @@ export const updateModule = async (req, res) => {
       return res.status(404).json({ error: "Module not found" });
     }
 
-    if (duration && isNaN(new Date(duration))) {
-      return res
-        .status(400)
-        .json({ error: "Invalid date format for 'duration'" });
+    // Ensure duration is a valid integer if provided
+    let durationInt;
+    if (duration) {
+      durationInt = parseInt(duration, 10);
+
+      if (isNaN(durationInt)) {
+        return res
+          .status(400)
+          .json({
+            error: "Invalid format for 'duration'. It should be an integer.",
+          });
+      }
     }
 
     const updatedModule = await prisma.modules.update({
       where: { id: parseInt(id) },
       data: {
         name,
-        duration: duration ? new Date(duration) : undefined,
+        duration: durationInt !== undefined ? durationInt : module.duration, // Use updated duration or keep the existing one if not provided
         price,
         status,
         userId,

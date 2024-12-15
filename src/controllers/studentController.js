@@ -8,8 +8,8 @@ export const getAllStudents = async (req, res) => {
     const students = await prisma.students.findMany({
       include: {
         user: true,
-        registrations: true,
-        payments: true,
+        registration: true,
+        payment: true,
       },
     });
     res.status(200).json(students);
