@@ -29,7 +29,7 @@ model users {
 model modules {
   id            Int            @id @unique @default(autoincrement())
   name          String         @db.VarChar(50)
-  duration      DateTime
+  duration      Int
   price         Decimal        @db.Decimal(10, 2)
   status        Boolean?       @default(true)
   userId        Int?            @map("user_id")

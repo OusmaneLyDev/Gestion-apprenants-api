@@ -1,0 +1,519 @@
+{
+	"info": {
+		"_postman_id": "182b072b-9ad8-4492-a6e7-3f18d8dbea1b",
+		"name": "Gestion de Stock API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "38098614"
+	},
+	"item": [
+		{
+			"name": "Modules",
+			"item": [
+				{
+					"name": "List Modules",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQ3LCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzI4MjgwNDcsImV4cCI6MTczMjg0MjQ0N30.millCHYhS_Kn4uDGlIUDOh7IXfdPF-AOZicpmczN--0"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3010/api/modules"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Module By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3010/api/modules/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Module",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQyLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzI0NzI4NDksImV4cCI6MTczMjQ4NzI0OX0.i6JgCWEPsvlBXlpaZKQIE_RMlbGNhWUl4zSd66FMcHM"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Science\",\r\n  \"duration\": \"1\",\r\n  \"price\": 200.50\r\n}\r\n"
+						},
+						"url": "http://localhost:3010/api/modules"
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Module",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQyLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzI0NzI4NDksImV4cCI6MTczMjQ4NzI0OX0.i6JgCWEPsvlBXlpaZKQIE_RMlbGNhWUl4zSd66FMcHM"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Oumar\",\r\n    \"email\": \"oumar@gmail.com\",\r\n    \"password\": \"password12\",\r\n    \"role\": \"EMPLOYE\"\r\n\r\n}"
+						},
+						"url": "http://localhost:3000/api/users/48"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Module",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQyLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzI0NzI4NDksImV4cCI6MTczMjQ4NzI0OX0.i6JgCWEPsvlBXlpaZKQIE_RMlbGNhWUl4zSd66FMcHM"
+							}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "http://localhost:3010/api/modules/3"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Student",
+			"item": [
+				{
+					"name": "List Students",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQyLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzI0NzI4NDksImV4cCI6MTczMjQ4NzI0OX0.i6JgCWEPsvlBXlpaZKQIE_RMlbGNhWUl4zSd66FMcHM"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": "http://localhost:3010/api/students"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Student",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQyLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzI0NzI4NDksImV4cCI6MTczMjQ4NzI0OX0.i6JgCWEPsvlBXlpaZKQIE_RMlbGNhWUl4zSd66FMcHM"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"Mamoudou Ba\",\r\n  \"phoneNumber\": \"41875932\",\r\n  \"email\": \"doe@example.com\",\r\n  \"address\": \"123 Main St\",\r\n  \"tutor\": \"Jane Doe\",\r\n  \"status\": true\r\n}\r\n"
+						},
+						"url": "http://localhost:3010/api/student"
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Student",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQyLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzI0NzI4NDksImV4cCI6MTczMjQ4NzI0OX0.i6JgCWEPsvlBXlpaZKQIE_RMlbGNhWUl4zSd66FMcHM"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"Samba\",\r\n  \"phoneNumber\": \"47859332\",\r\n  \"email\": \"b.doe@example.com\",\r\n  \"address\": \"123 Main St\",\r\n  \"tutor\": \"Jane Doe\",\r\n  \"status\": true\r\n}\r\n"
+						},
+						"url": "http://localhost:3010/api/student/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Student",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQyLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzI0NzI4NDksImV4cCI6MTczMjQ4NzI0OX0.i6JgCWEPsvlBXlpaZKQIE_RMlbGNhWUl4zSd66FMcHM"
+							}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Produit A\",\r\n  \"stock\": 0,\r\n  \"safetyStock\": 10,\r\n  \"barcode\": \"123456709\",\r\n  \"purshase_price\": 10.5,\r\n  \"sale_price\": 20\r\n}\r\n"
+						},
+						"url": "http://localhost:3010/api/student/2"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Registration",
+			"item": [
+				{
+					"name": "List Registrations",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQyLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzI0NzI4NDksImV4cCI6MTczMjQ4NzI0OX0.i6JgCWEPsvlBXlpaZKQIE_RMlbGNhWUl4zSd66FMcHM"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3010/api/registration"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Registration By Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": "{{base_url}}/suppliers"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Registration",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQyLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzI0NzI4NDksImV4cCI6MTczMjQ4NzI0OX0.i6JgCWEPsvlBXlpaZKQIE_RMlbGNhWUl4zSd66FMcHM"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"studentId\": 1,\r\n  \"moduleId\": 25,\r\n  \"amount\": 100,\r\n  \"userId\": 1,\r\n  \"startDate\": \"2024-01-01\",\r\n  \"endDate\": \"2024-12-31\"\r\n}\r\n"
+						},
+						"url": "http://localhost:3010/api/registration"
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Registration",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQyLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzI0NzI4NDksImV4cCI6MTczMjQ4NzI0OX0.i6JgCWEPsvlBXlpaZKQIE_RMlbGNhWUl4zSd66FMcHM"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"studentId\": 1,\r\n  \"moduleId\": 25,\r\n  \"amount\": 200,\r\n  \"userId\": 1,\r\n  \"startDate\": \"2024-01-01\",\r\n  \"endDate\": \"2024-12-31\"\r\n}\r\n"
+						},
+						"url": "http://localhost:3010/api/registration/5"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Registration",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQyLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzI4MDQzNTAsImV4cCI6MTczMjgxODc1MH0.gWdlguf601A1xJEub4GjJIWw_pIynpkmYFHJ3WVdV2Y"
+							}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "http://localhost:3010/api/registration/5"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payment",
+			"item": [
+				{
+					"name": "List Payments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQyLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzI0ODcyOTYsImV4cCI6MTczMjUwMTY5Nn0._YTbYY5AyGVfFmt4Hep0wprHEY5uqihJIWtZZchPMto"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": "http://localhost:3010/api/payments"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Payment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQyLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzI0ODcyOTYsImV4cCI6MTczMjUwMTY5Nn0._YTbYY5AyGVfFmt4Hep0wprHEY5uqihJIWtZZchPMto"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"studentId\": 1,\r\n  \"moduleId\": 1,\r\n  \"registrationId\": 3,\r\n  \"paymentDate\": \"1/8/2024\",\r\n  \"amount\": 100.00,\r\n  \"payer\": \"John Doe\",\r\n  \"payerNumber\": \"123456789\",\r\n  \"paymentMode\": \"Credit Card\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3010/api/payments"
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Payment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQyLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzI0ODcyOTYsImV4cCI6MTczMjUwMTY5Nn0._YTbYY5AyGVfFmt4Hep0wprHEY5uqihJIWtZZchPMto"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"studentId\": 1,\r\n  \"moduleId\": 1,\r\n  \"registrationId\": 3,\r\n  \"paymentDate\": \"2024-12-14T12:00:00Z\",\r\n  \"amount\": 100.00,\r\n  \"payer\": \"Doro Ba\",\r\n  \"payerNumber\": \"123456789\",\r\n  \"paymentMode\": \"Credit Card\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3010/api/payments/7"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Payment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQyLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzI0ODcyOTYsImV4cCI6MTczMjUwMTY5Nn0._YTbYY5AyGVfFmt4Hep0wprHEY5uqihJIWtZZchPMto"
+							}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"supplierId\": 100,\r\n  \"receptionDate\": \"07/11/2024\", \r\n  \"detailReceptions\": [\r\n    {\r\n      \"productId\": 120,\r\n      \"quantity\": 10,\r\n      \"price\": 100.50\r\n    }\r\n  ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3010/api/payments/1"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,6 +1,5 @@
 import { body, param, validationResult } from "express-validator";
 
-
 // Validation middleware for creating or updating a module
 export const validateModule = [
   body("name")
@@ -8,11 +7,6 @@ export const validateModule = [
     .withMessage("Module name is required")
     .isString()
     .withMessage("Module name must be a string"),
-  body("duration")
-    .notEmpty()
-    .withMessage("Duration is required")
-    .isISO8601()
-    .withMessage("Duration must be a valid ISO 8601 date"),
   body("price")
     .notEmpty()
     .withMessage("Price is required")
